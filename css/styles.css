@@ -2,8 +2,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(101,58,181,1) 11%, rgba(0,212,255,1) 100%);
+    background: rgb(30,28,65);
+    background: linear-gradient(rgba(11,5,65,1) 100%, rgba(29,27,54,1) 50%, 90deg, rgba(30,28,65,1) 0%);
+    border: 3px solid darkred;
 }
 
 .sidebar {
@@ -16,7 +17,7 @@ body {
     background: linear-gradient(90deg, rgba(30,28,65,1) 0%, rgba(29,27,54,1) 50%, rgba(11,5,65,1) 100%); 
     padding-top: 20px;
     color: white;
-    border-right: 3px solid red;
+    border-right: 3px solid darkred;
 }
 
 .sidebar h2 {
@@ -87,7 +88,13 @@ body {
 }
 
 .company-name {
-    color: #ff9999;
+    color: darkred;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.course-type {
+    color: red;
     text-align: center;
     margin-top: 20px;
 }
