@@ -4,7 +4,7 @@ body {
     font-family: Arial, sans-serif;
     background: rgb(30,28,65);
     background: linear-gradient(rgba(11,5,65,1) 100%, rgba(29,27,54,1) 50%, 90deg, rgba(30,28,65,1) 0%);
-    border: 3px solid darkred;
+    border: 2px solid #551010;
 }
 
 .sidebar {
@@ -17,7 +17,7 @@ body {
     background: linear-gradient(90deg, rgba(30,28,65,1) 0%, rgba(29,27,54,1) 50%, rgba(11,5,65,1) 100%); 
     padding-top: 20px;
     color: white;
-    border-right: 3px solid darkred;
+    border-right: 2px solid #551010;
 }
 
 .sidebar h2 {
@@ -96,7 +96,7 @@ body {
 }
 
 .company-name {
-    color: darkred;
+    color: #860000;
     text-align: center;
     margin-top: 20px;
     font-weight: bold;
