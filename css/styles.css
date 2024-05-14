@@ -91,6 +91,7 @@ body {
     color: darkred;
     text-align: center;
     margin-top: 20px;
+    font-weight: bold;
 }
 
 .course-type {
