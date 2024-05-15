@@ -1,12 +1,15 @@
+/* Estilos globais */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background: rgb(30,28,65);
     background: linear-gradient(rgba(11,5,65,1) 100%, rgba(29,27,54,1) 50%, 90deg, rgba(30,28,65,1) 0%);
-    border: 2px solid #551010;
+    border: 3px solid darkred;
+    color: white;
 }
 
+/* Estilos da barra lateral */
 .sidebar {
     position: fixed;
     left: 0;
@@ -14,10 +17,10 @@ body {
     width: 200px;
     height: 100%;
     background: rgb(30,28,65);
-    background: linear-gradient(90deg, rgba(30,28,65,1) 0%, rgba(29,27,54,1) 50%, rgba(11,5,65,1) 100%); 
+    background: linear-gradient(90deg, rgba(30,28,65,1) 0%, rgba(29,27,54,1) 50%, rgba(11,5,65,1) 100%);
     padding-top: 20px;
     color: white;
-    border-right: 2px solid #551010;
+    border-right: 3px solid darkred;
 }
 
 .sidebar h2 {
@@ -49,8 +52,9 @@ body {
     color: darkred;
 }
 
+/* Estilos principais */
 .main {
-    margin-left: 50px;
+    margin-left: 200px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -60,7 +64,6 @@ body {
 .container {
     margin: 20px;
     text-align: center;
-    text-decoration: none;
 }
 
 .container img {
@@ -69,7 +72,6 @@ body {
     border-radius: 50%;
     border: 2px solid white;
     transition: transform 0.3s;
-    text-decoration: none;
 }
 
 .container img:hover {
@@ -80,7 +82,6 @@ body {
     font-size: 24px;
     margin-top: 10px;
     color: white;
-    text-decoration: none;
 }
 
 @media (max-width: 600px) {
@@ -96,7 +97,7 @@ body {
 }
 
 .company-name {
-    color: #860000;
+    color: darkred;
     text-align: center;
     margin-top: 20px;
     font-weight: bold;
@@ -108,6 +109,7 @@ body {
     margin-top: 20px;
 }
 
+/* Link de voltar */
 .back-link {
     position: fixed;
     top: 20px;
@@ -117,11 +119,12 @@ body {
     font-size: 16px;
 }
 
+/* Estilos das aulas */
 .lesson {
     margin-bottom: 30px;
     color: white;
-    max-width: 800px; /* Largura máxima para evitar que o conteúdo se estenda demais */
-    margin: 0 auto; /* Centralizar o conteúdo na página */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .video-container {
@@ -141,4 +144,21 @@ body {
 
 .lesson p {
     color: white;
+}
+
+/* Estilos do ícone e nome do usuário */
+.user-info {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
