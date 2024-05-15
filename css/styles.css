@@ -6,7 +6,77 @@ body {
     background: rgb(30,28,65);
     background: linear-gradient(rgba(11,5,65,1) 100%, rgba(29,27,54,1) 50%, 90deg, rgba(30,28,65,1) 0%);
     border: 3px solid darkred;
+    height: 100vh; /* Certifica que o body ocupa a altura total da janela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: rgba(30, 28, 65, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid darkred;
     color: white;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: darkred;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-container button {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: darkred;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-container button:hover {
+    background: red;
+}
+
+.login-container a {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.user-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.user-menu .user-icon {
+    color: white;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.user-menu .user-name {
+    color: white;
+    font-size: 18px;
 }
 
 /* Estilos da barra lateral */
