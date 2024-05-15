@@ -6,10 +6,18 @@ body {
     background: rgb(30,28,65);
     background: linear-gradient(rgba(11,5,65,1) 100%, rgba(29,27,54,1) 50%, 90deg, rgba(30,28,65,1) 0%);
     border: 3px solid darkred;
-    height: 100vh; /* Certifica que o body ocupa a altura total da janela */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.company-name {
+    color: darkred;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px;
 }
 
 .login-container {
