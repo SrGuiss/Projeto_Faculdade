@@ -13,3 +13,4 @@ const sequelize = new Sequelize('DATABASE', 'USER', 'PASS', {
 });
 ```
 <h3>Docker</h3>
+<p>Tarefa em desenvolvimento.</p>
