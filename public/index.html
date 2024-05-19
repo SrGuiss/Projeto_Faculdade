@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Banco de Dados</title>
+</head>
+<body>
+    <!--Rodar o comando "node server.js"
+    e abrir o navegador na porta 3000, exemplo: http://localhost:3000/-->
+    <h1>Consulta de Banco de Dados</h1>
+    <button id="consultaAluno">Consultar Aluno</button>
+    <button id="consultaCurso">Consultar Curso</button>
+
+    <h2>Consultar Aluno por ID:</h2>
+    <input type="number" id="alunoId" placeholder="Insira o ID do Aluno">
+    <button id="consultaAlunoRa">Consultar Aluno</button>
+
+    <h2>Inserir Novo Aluno:</h2>
+    <input type="text" id="alunoNome" placeholder="Nome do Aluno">
+    <button id="inserirAlunoBtn">Inserir Aluno</button>
+
+    <h2>Resultados:</h2>
+    <pre id="resultados"></pre>
+
+    <script src="app.js"></script>
+</body>
+</html>
