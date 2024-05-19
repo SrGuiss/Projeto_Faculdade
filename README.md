@@ -12,3 +12,4 @@ const sequelize = new Sequelize('DATABASE', 'USER', 'PASS', {
     dialect: 'mysql'
 });
 ```
+<h3>Docker</h3>
