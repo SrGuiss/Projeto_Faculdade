@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="./css/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Perfil</h1>
+        <p>Edite seu perfil e outras configurações relacionadas</p>
+        <input type="button" value="Editar perfil" class="edit-profile-btn">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <img src="avatar-placeholder.png" alt="Avatar">
+                </div>
+                <div class="profile-info">
+                    <h2 id="nome">@nome</h2>
+                    <p id="email">@email</p>
+                    <p id="localidade">Você ainda não preencheu sua localidade</p>
+                </div>
+            </div>
+            <div class="profile-bio">
+                <h3>Biografia</h3>
+                <p id="bio">Você ainda não editou sua biografia</p>
+                <p class="subscription">Assinatura vigente até dia 29/05/2025</p>
+            </div>
+        </div>        
+
+        <div class="profile-footer">
+            <a href="#">Termos de Uso</a>
+            <a href="#">Política de Privacidade</a>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

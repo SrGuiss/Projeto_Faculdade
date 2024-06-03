@@ -1,5 +1,6 @@
 const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
+const path = require('path');
 const app = express();
 const port = 3000;
 
@@ -22,7 +23,11 @@ const Aluno = sequelize.define('Aluno', {
     NOME: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    E_MAIL: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
     tableName: 'ALUNO',
     timestamps: false
@@ -99,22 +104,11 @@ const CursoAluno = sequelize.define('CursoAluno', {
     timestamps: false
 });
 
-// Rota para consultar os dados do banco de dados
+// Rotas para consultar os dados do banco de dados
 app.get('/GetAllAluno', async (req, res) => {
     try {
-        // Consultar todos os dados
         const alunos = await Aluno.findAll();
-        /*const cursos = await Curso.findAll();
-        const logins = await Login.findAll();
-        const cursoAlunos = await CursoAluno.findAll();*/
-
-        // Enviar os dados como resposta
-        res.json({
-            alunos/*,
-            cursos,
-            logins,
-            cursoAlunos*/
-        });
+        res.json({ alunos });
     } catch (error) {
         console.error('Erro ao consultar o banco de dados:', error);
         res.status(500).json({ error: 'Erro ao consultar o banco de dados' });
@@ -123,13 +117,8 @@ app.get('/GetAllAluno', async (req, res) => {
 
 app.get('/GetAllCurso', async (req, res) => {
     try {
-        // Consultar todos os dados        
         const cursos = await Curso.findAll();
-
-        // Enviar os dados como resposta
-        res.json({
-            cursos
-        });
+        res.json({ cursos });
     } catch (error) {
         console.error('Erro ao consultar o banco de dados:', error);
         res.status(500).json({ error: 'Erro ao consultar o banco de dados' });
@@ -168,8 +157,38 @@ app.post('/aluno', async (req, res) => {
     }
 });
 
+app.get('/aluno/:id', async (req, res) => {
+    try {
+        const alunoId = req.params.id;
+        const aluno = await Aluno.findOne({
+            where: { RA: alunoId },
+            attributes: ['RA', 'NOME', 'E_MAIL'] // Adicione outros atributos conforme necessário
+        });
+        if (aluno) {
+            console.log(aluno);
+            res.json(aluno);
+        } else {
+            console.log(aluno);
+            res.status(404).json({ error: 'Aluno não encontrado' });            
+        }
+    } catch (error) {
+        console.error('Erro ao consultar o aluno:', error);
+        res.status(500).json({ error: 'Erro ao consultar o aluno' });
+    }
+});
+
+
 // Servir arquivos estáticos (HTML e JS)
 app.use(express.static('public'));
+
+// Roteamento básico para páginas HTML
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'profile.html'));
+});
 
 // Iniciar o servidor
 app.listen(port, () => {
