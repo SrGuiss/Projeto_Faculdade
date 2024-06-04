@@ -1,4 +1,4 @@
-/* Estilos globais */
+
 body {
     margin: 0;
     padding: 0;
@@ -18,35 +18,43 @@ body {
     text-align: center;
     margin-bottom: 20px;
     font-size: 36px;
+    font-weight: bold;
 }
 
-.login-container {
+.login-container, .register-container {
     background: rgba(30, 28, 65, 0.8);
     padding: 20px;
     border-radius: 10px;
     border: 1px solid darkred;
     color: white;
-}
-
-.login-container h2 {
+    width: 300px;
     text-align: center;
-    color: darkred;
+    margin-top: 50px;
 }
 
-.login-container form {
+.login-container h2, .register-container h2 {
+    color: darkred;
+    margin-bottom: 20px;
+}
+
+.login-container form, .register-container form {
     display: flex;
     flex-direction: column;
 }
 
 .login-container input[type="text"],
-.login-container input[type="password"] {
+.login-container input[type="password"],
+.register-container input[type="text"],
+.register-container input[type="password"],
+.register-container input[type="email"] {
     padding: 10px;
     margin: 5px 0;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 1em;
 }
 
-.login-container button {
+.login-container button, .register-container button {
     padding: 10px;
     margin: 10px 0;
     border: none;
@@ -57,37 +65,26 @@ body {
     transition: background 0.3s;
 }
 
-.login-container button:hover {
+.login-container button:hover, .register-container button:hover {
     background: red;
 }
 
-.login-container a {
-    color: white;
-    text-align: center;
+.login-container a, .register-container a {
+    color: #5cb85c;
     text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.login-container a:hover, .register-container a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
     margin-top: 10px;
 }
 
-.user-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.user-menu .user-icon {
-    color: white;
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.user-menu .user-name {
-    color: white;
-    font-size: 18px;
-}
-
-/* Estilos da barra lateral */
 .sidebar {
     position: fixed;
     left: 0;
@@ -130,7 +127,6 @@ body {
     color: darkred;
 }
 
-/* Estilos principais */
 .main {
     margin-left: 200px;
     padding: 10px;
@@ -174,20 +170,6 @@ body {
     }
 }
 
-.company-name {
-    color: darkred;
-    text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.course-type {
-    color: red;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Link de voltar */
 .back-link {
     position: fixed;
     top: 20px;
@@ -197,7 +179,6 @@ body {
     font-size: 16px;
 }
 
-/* Estilos das aulas */
 .lesson {
     margin-bottom: 30px;
     color: white;
@@ -224,7 +205,6 @@ body {
     color: white;
 }
 
-/* Estilos do ícone e nome do usuário */
 .user-info {
     position: fixed;
     top: 20px;
