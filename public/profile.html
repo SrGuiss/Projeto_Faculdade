@@ -6,15 +6,27 @@
     <title>Perfil</title>
     <link rel="stylesheet" href="./css/profile.css">
 </head>
+<script>
+    function newPopup(){
+        varWindow = window.open (
+        'popup.html',
+        'pagina',
+        "width=650, height=355, top=100, left=110, scrollbars=no " );
+        }
+</script>
 <body>
     <div class="profile-container">
-        <h1>Perfil</h1>
-        <p>Edite seu perfil e outras configurações relacionadas</p>
-        <input type="button" value="Editar perfil" class="edit-profile-btn">
+        <div id="dvTxt">
+            <h1>Perfil</h1>
+            <p>Edite seu perfil e outras configurações relacionadas</p>
+        </div>
+        <div id="divBtn">
+            <input type="button" onClick="javascript:newPopup()" value="Editar perfil" class="edit-profile-btn">
+        </div>
         <div class="profile-card">
             <div class="profile-header">
                 <div class="profile-image">
-                    <img src="avatar-placeholder.png" alt="Avatar">
+                    <img src="./images/profile.png" style="background-color: #4c6ef5;" alt="Avatar">
                 </div>
                 <div class="profile-info">
                     <h2 id="nome">@nome</h2>

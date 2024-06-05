@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.json());
 
 // Configuração do Sequelize
-const sequelize = new Sequelize('DATABASE', 'USER', 'PASS', {
+const sequelize = new Sequelize('PROJETO', 'root', 'asDJAFIsss!@1321', {
     host: 'localhost',
     dialect: 'mysql'
 });
