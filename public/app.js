@@ -86,11 +86,13 @@ document.getElementById('inserirAlunoBtn').addEventListener('click', async () =>
     }
 });*/
 
+const id = 2;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar se estamos na página de perfil
     if (window.location.pathname === '/profile.html' || window.location.pathname === '/profile') {
         // Fazer a chamada AJAX para obter os dados do aluno
-        fetch('/aluno/2') // Substitua 1 pelo ID do aluno desejado
+        fetch(`/aluno/${id}`) // Substitua 1 pelo ID do aluno desejado
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao consultar o aluno');

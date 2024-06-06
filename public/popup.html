@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/profile.css">
+    <title>Alteração de Usuário</title>
+    <link rel="stylesheet" href="./css/popup.css">
 </head>
-    <body>
-        <input type="text" id="username" placeholder="Nome do usuário">
-        <input type="text" id="email" placeholder="E-mail do usuário">
-        <button class="edit-profile-btn">Enviar</button>
-        <script src="app.js"></script>
-    </body>
+<body>
+    <div class="popup">
+        <form id="updateForm">
+            <h2>Alterar Dados do Usuário</h2>
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Nome do usuário" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="E-mail do usuário" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script src="./js/popup.js"></script>
+</body>
 </html>
