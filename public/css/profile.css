@@ -102,9 +102,17 @@ p {
     cursor: pointer;
     margin-top: 20px;
     font-size: 14px;
-    margin-left: 86%;
 }
 
 .edit-profile-btn:hover {
     background-color: #4c6ef5;
 }
+
+
+#divBtn{
+    margin-left: 56%;
+}
+
+#divBtn, #dvTxt {
+    display: inline-block;    
+  }

@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.json());
 
 // Configuração do Sequelize
-const sequelize = new Sequelize('DATABASE', 'USER', 'PASS', {
+const sequelize = new Sequelize('PROJETO', 'root', 'asDJAFIsss!@1321', {
     host: 'localhost',
     dialect: 'mysql'
 });
@@ -125,23 +125,6 @@ app.get('/GetAllCurso', async (req, res) => {
     }
 });
 
-app.get('/aluno/:id', async (req, res) => {
-    try {
-        const alunoId = req.params.id;
-        const aluno = await Aluno.findOne({ where: { RA: alunoId } });
-
-        if (aluno) {
-            res.json(aluno);
-        } else {
-            res.status(404).json({ error: 'Aluno não encontrado' });
-        }
-    } catch (error) {
-        console.error('Erro ao consultar o aluno:', error);
-        res.status(500).json({ error: 'Erro ao consultar o aluno' });
-    }
-});
-
-// Rota para inserir um novo aluno
 app.post('/aluno', async (req, res) => {
     try {
         const { NOME } = req.body;
@@ -174,6 +157,27 @@ app.get('/aluno/:id', async (req, res) => {
     } catch (error) {
         console.error('Erro ao consultar o aluno:', error);
         res.status(500).json({ error: 'Erro ao consultar o aluno' });
+    }
+});
+
+app.put('/aluno/:id', async (req, res) => {
+    try {
+        const alunoId = req.params.id;
+        const { NOME, E_MAIL } = req.body;
+
+        const aluno = await Aluno.findOne({ where: { RA: alunoId } });
+
+        if (aluno) {
+            aluno.NOME = NOME;
+            aluno.E_MAIL = E_MAIL;
+            await aluno.save();
+            res.json(aluno);
+        } else {
+            res.status(404).json({ error: 'Aluno não encontrado' });
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar o aluno:', error);
+        res.status(500).json({ error: 'Erro ao atualizar o aluno' });
     }
 });
 
