@@ -125,73 +125,29 @@ app.get('/GetAllCurso', async (req, res) => {
     }
 });
 
-app.post('/aluno', async (req, res) => {
-    try {
-        const { NOME } = req.body;
-        if (!NOME) {
-            return res.status(400).json({ error: 'Nome do aluno é obrigatório' });
-        }
-
-        const novoAluno = await Aluno.create({ NOME });
-        res.status(201).json(novoAluno);
-    } catch (error) {
-        console.error('Erro ao inserir o aluno:', error);
-        res.status(500).json({ error: 'Erro ao inserir o aluno' });
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    // Supondo que a verificação das credenciais seja bem-sucedida
+    if (username === 'usuario' && password === 'senha') {
+        res.redirect('/public/html/index.html');
+    } else {
+        res.status(401).send('Credenciais inválidas');
     }
 });
 
-app.get('/aluno/:id', async (req, res) => {
-    try {
-        const alunoId = req.params.id;
-        const aluno = await Aluno.findOne({
-            where: { RA: alunoId },
-            attributes: ['RA', 'NOME', 'E_MAIL'] // Adicione outros atributos conforme necessário
-        });
-        if (aluno) {
-            console.log(aluno);
-            res.json(aluno);
-        } else {
-            console.log(aluno);
-            res.status(404).json({ error: 'Aluno não encontrado' });            
-        }
-    } catch (error) {
-        console.error('Erro ao consultar o aluno:', error);
-        res.status(500).json({ error: 'Erro ao consultar o aluno' });
-    }
-});
-
-app.put('/aluno/:id', async (req, res) => {
-    try {
-        const alunoId = req.params.id;
-        const { NOME, E_MAIL } = req.body;
-
-        const aluno = await Aluno.findOne({ where: { RA: alunoId } });
-
-        if (aluno) {
-            aluno.NOME = NOME;
-            aluno.E_MAIL = E_MAIL;
-            await aluno.save();
-            res.json(aluno);
-        } else {
-            res.status(404).json({ error: 'Aluno não encontrado' });
-        }
-    } catch (error) {
-        console.error('Erro ao atualizar o aluno:', error);
-        res.status(500).json({ error: 'Erro ao atualizar o aluno' });
-    }
-});
-
-
-// Servir arquivos estáticos (HTML e JS)
 app.use(express.static('public'));
 
 // Roteamento básico para páginas HTML
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'html', 'login.html'));
 });
 
 app.get('/profile', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'profile.html'));
+    res.sendFile(path.join(__dirname, 'public', 'html', 'profile.html'));
+});
+
+app.get('/cadastro', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'cadastro.html'));
 });
 
 // Iniciar o servidor
