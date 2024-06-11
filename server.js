@@ -125,14 +125,20 @@ app.get('/GetAllCurso', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/', async (req, res) => {
     const { username, password } = req.body;
-    // Supondo que a verificação das credenciais seja bem-sucedida
-    if (username === 'usuario' && password === 'senha') {
-        res.redirect('/public/html/index.html');
-    } else {
-        res.status(401).send('Credenciais inválidas');
-    }
+
+    const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+    db.query(query, [username, password], (err, results) => {
+        if (err) {
+        return res.status(500).json({ error: err.message });
+        }
+        if (results.length > 0) {
+        res.json({ success: true, user: results[0] });
+        } else {
+        res.status(401).json({ success: false, message: 'Invalid credentials' });
+        }
+    });
 });
 
 app.use(express.static('public'));
