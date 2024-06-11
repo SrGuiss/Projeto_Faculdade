@@ -150,6 +150,15 @@ app.get('/cadastro', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'cadastro.html'));
 });
 
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'login.html'));
+});
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
+});
+
+
 // Iniciar o servidor
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
