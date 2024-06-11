@@ -20,6 +20,37 @@
             <input type="password" id="confirm-password" placeholder="Confirmar Senha" required>
             <button type="submit">Cadastrar</button>
         </form>
+
+        <script>
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+    
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+    
+                // Você pode fazer a requisição de cadastro aqui. Após a resposta bem-sucedida, salve o nome do usuário no localStorage
+                // Por exemplo, se você usar fetch:
+                fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Salve o nome do usuário no localStorage
+                        localStorage.setItem('username', username);
+                        // Redirecione para a página index.html
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Erro no cadastro: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Erro:', error));
+            });
+        </script>
         <a href="../html/login.html">Já tem uma conta? Login</a>
         <div id="error-message" class="error-message"></div>
     </div>

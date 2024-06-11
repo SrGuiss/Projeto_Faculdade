@@ -11,7 +11,16 @@
 
     <div class="user-info">
         <img src="../images/user-icon.png" alt="User Icon">
-        <span>Nome do Usuário</span>
+        <h4>Bem-vindo <span id="userSpan"></span>!</h4>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('userSpan').textContent = username;
+            }
+        });
+    </script>
     </div>
 
     <div class="lesson">
