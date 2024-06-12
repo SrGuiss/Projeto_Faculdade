@@ -1,10 +1,12 @@
-const id = 2;
+import { getUserId } from './js/sessionManager.js';
+
+const userId = getUserId();
 
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar se estamos na página de perfil
     if (window.location.pathname === '/profile.html' || window.location.pathname === '/profile') {
         // Fazer a chamada AJAX para obter os dados do aluno
-        fetch(`/aluno/${id}`) 
+        fetch(`/aluno/${userId}`) 
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao consultar o aluno');

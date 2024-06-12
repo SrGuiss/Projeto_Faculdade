@@ -4,9 +4,10 @@ const session = require('express-session');
 const path = require('path');
 const app = express();
 const port = 3000;
-
+const { setUserId } = require('./public/js/sessionManager.js').default;
 // Middleware para analisar o corpo da solicitação JSON
 app.use(express.json());
+
 
 app.use(session({
     secret: 'sua-chave-secreta-aqui',
@@ -184,11 +185,9 @@ app.post('/login', async (req, res) => {
         });
 
         if (login) {
-            console.log('entrou sucesso',login);
-            req.session.userId = login.RA; // Armazena o ID do usuário na sessão
+            setUserId(login.RA);
             res.json({ message: 'Login bem-sucedido', userId: login.RA });
         } else {
-            console.log('entrou erro',login);
             res.status(401).json({ error: 'Credenciais inválidas' });
         }
     } catch (error) {
