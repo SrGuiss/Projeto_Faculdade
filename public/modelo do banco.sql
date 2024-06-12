@@ -33,3 +33,4 @@ INSERT INTO ALUNO(NOME,E_MAIL) VALUES('Victor','Victor@hotmail.com');
 INSERT INTO ALUNO(NOME,E_MAIL) VALUES('Guilherme','Guilherme@hotmail.com');
 INSERT INTO ALUNO(NOME,E_MAIL) VALUES('Rubem','Rubem@hotmail.com');
 INSERT INTO ALUNO(NOME,E_MAIL) VALUES('Leonarndo','Leonarndo@hotmail.com');
+INSERT INTO LOGIN VALUES('123', 'vitu', 1);

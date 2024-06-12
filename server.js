@@ -1,11 +1,19 @@
 const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
+const session = require('express-session');
 const path = require('path');
 const app = express();
 const port = 3000;
 
 // Middleware para analisar o corpo da solicitação JSON
 app.use(express.json());
+
+app.use(session({
+    secret: 'sua-chave-secreta-aqui',
+    resave: false,
+    saveUninitialized: false,
+    userId: 0
+}));
 
 // Configuração do Sequelize
 const sequelize = new Sequelize('PROJETO', 'root', 'asDJAFIsss!@1321', {
@@ -125,21 +133,70 @@ app.get('/GetAllCurso', async (req, res) => {
     }
 });
 
-app.post('/', async (req, res) => {
-    const { username, password } = req.body;
-
-    const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
-    db.query(query, [username, password], (err, results) => {
-        if (err) {
-        return res.status(500).json({ error: err.message });
-        }
-        if (results.length > 0) {
-        res.json({ success: true, user: results[0] });
+app.get('/aluno/:id', async (req, res) => {
+    try {
+        const alunoId = req.params.id;
+        const aluno = await Aluno.findOne({
+            where: { RA: alunoId },
+            attributes: ['RA', 'NOME', 'E_MAIL'] // Adicione outros atributos conforme necessário
+        });
+        if (aluno) {
+            console.log(aluno);
+            res.json(aluno);
         } else {
-        res.status(401).json({ success: false, message: 'Invalid credentials' });
+            console.log(aluno);
+            res.status(404).json({ error: 'Aluno não encontrado' });            
         }
-    });
+    } catch (error) {
+        console.error('Erro ao consultar o aluno:', error);
+        res.status(500).json({ error: 'Erro ao consultar o aluno' });
+    }
 });
+
+app.put('/aluno/:id', async (req, res) => {
+    try {
+        const alunoId = req.params.id;
+        const { NOME, E_MAIL } = req.body;
+
+        const aluno = await Aluno.findOne({ where: { RA: alunoId } });
+
+        if (aluno) {
+            aluno.NOME = NOME;
+            aluno.E_MAIL = E_MAIL;
+            await aluno.save();
+            res.json(aluno);
+        } else {
+            res.status(404).json({ error: 'Aluno não encontrado' });
+        }
+    } catch (error) {
+        console.error('Erro ao atualizar o aluno:', error);
+        res.status(500).json({ error: 'Erro ao atualizar o aluno' });
+    }
+});
+
+app.post('/login', async (req, res) => {
+    try {
+        const { USUARIO, SENHA } = req.body;
+
+        const login = await Login.findOne({ 
+            attributes: ['RA'], 
+            where: { USUARIO, SENHA } 
+        });
+
+        if (login) {
+            console.log('entrou sucesso',login);
+            req.session.userId = login.RA; // Armazena o ID do usuário na sessão
+            res.json({ message: 'Login bem-sucedido', userId: login.RA });
+        } else {
+            console.log('entrou erro',login);
+            res.status(401).json({ error: 'Credenciais inválidas' });
+        }
+    } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        res.status(500).json({ error: 'Erro ao fazer login' });
+    }
+});
+
 
 app.use(express.static('public'));
 
