@@ -1,6 +1,4 @@
-import { getUserId } from './js/sessionManager.js';
-
-const userId = getUserId();
+const userId = 2;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar se estamos na página de perfil
